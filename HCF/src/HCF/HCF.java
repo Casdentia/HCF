@@ -1,5 +1,6 @@
 package HCF;
 
+import HCF.factions.FactionsCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -8,16 +9,20 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import HCF.factions.FactionsCommand;
+public class HCF extends JavaPlugin implements Listener {
 
-public class HCF extends JavaPlugin implements Listener{
+	private static HCF instance;
 
 	@Override
 	public void onEnable() {
+
+		instance = this;
 		
 		Bukkit.getPluginManager().registerEvents(this, this);
 		getConfig().options().copyDefaults(true);
-		saveConfig();
+
+		saveDefaultConfig();
+
 		getCommand("f").setExecutor(new FactionsCommand());
 	}
 	
@@ -36,9 +41,11 @@ public class HCF extends JavaPlugin implements Listener{
 		}
 	}
 	
+	public static HCF getInstance() {
+		return instance;
+	}
 	
-	
-	public static String cc(String msg) {
+	public static String colorize(String msg) {
 		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 	
