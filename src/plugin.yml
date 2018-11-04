@@ -1,0 +1,8 @@
+name: HCFCORE
+version: 1
+author: exslodingdogs
+main: HCF.HCF
+
+commands:
+  f:
+    description: this is the faction commands!
