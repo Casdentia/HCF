@@ -1,9 +1,11 @@
-package HCF.api;
+package HCF.claim;
 
+import HCF.api.LocationHelper;
+import HCF.api.Preservable;
 import javafx.util.Pair;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,7 +54,10 @@ public class Claim implements Preservable {
     }
 
     @Override
-    public void save(YamlConfiguration configuration) {
+    public void save(FileConfiguration configuration) {
+
+        if (!configuration.isConfigurationSection("claims"))
+            configuration.createSection("claims");
 
         ConfigurationSection section = configuration.getConfigurationSection("claims");
 

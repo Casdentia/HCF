@@ -1,6 +1,6 @@
 package HCF.api;
 
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public interface Preservable {
 
@@ -11,5 +11,5 @@ public interface Preservable {
      *
      * @param configuration The specified <code>YamlConfiguration</code>.
      */
-    void save(YamlConfiguration configuration);
+    void save(FileConfiguration configuration);
 }
